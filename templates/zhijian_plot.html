@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html style="height: 100%" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>质检可视化</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.8.0/echarts.min.js"></script>
+    <script src="../js/echarts.min.js"></script>
+	<!-- 引入 vintage 主题 -->
+
+</head>
+<header>
+        <h1>铅酸蓄电池组质量检测</h1>
+        <div class="showTime"></div>
+
+        <script>
+            //显示时间
+            var t = null;
+            t = setTimeout(time, 1000); //開始运行
+            function time() {
+                clearTimeout(t); //清除定时器
+                dt = new Date();
+                var y = dt.getFullYear();
+                var mt = dt.getMonth() + 1;
+                var day = dt.getDate();
+                var h = dt.getHours(); //获取时
+                var m = dt.getMinutes(); //获取分
+                var s = dt.getSeconds(); //获取秒
+                document.querySelector(".showTime").innerHTML =
+                    "当前时间：" +
+                    y +
+                    "年" +
+                    mt +
+                    "月" +
+                    day + '日' +
+                    "-" +
+                    h +
+                    "时" +
+                    m +
+                    "分" +
+                    s +
+                    "秒";
+                t = setTimeout(time, 1000); //设定定时器，循环运行
+            }
+        </script>
+    </header>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width:1800px;height:800px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 显示标题，图例和空的坐标轴
+$.get('/zhijian_echarts').done(function (data) {
+        myChart.setOption(option={
+        legend: {
+    orient: 'vertical',
+    x: 'left',
+    data: ['质量好', '质量不过关']
+    },
+
+        series: [
+    {
+      type: 'pie',
+      radius: ['50%', '70%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: false,
+        position: 'center',
+        emphasis: {
+          show: true
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '30',
+          fontWeight: 'bold'
+        }
+      },
+      data: [
+        {
+          value: data.data,
+          name: '质量好'
+        },
+        {
+          value: 24-data.data,
+          name: '质量不过关'
+        },
+      ]
+    }
+  ]});
+});
+         // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
+
+
+
+

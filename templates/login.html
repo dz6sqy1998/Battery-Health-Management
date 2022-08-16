@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+    <title>登录</title>
+</head>
+<body>
+    <form action="/tianshu" method='post'>
+        <table>
+            <tbody>
+            <tr>
+                <td>邮箱：</td>
+                <td>
+                    <input type="text" name="email" style="text-align:center;">
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="password" style="text-align:center;"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button>登录</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+</body>
+</html

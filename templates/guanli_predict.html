@@ -1,0 +1,37 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Success</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <form action='/predict' method="POST">-->
+<!--    <p>文件上传成功!</p>-->
+<!--    <p>要处理的文件名称为: <b> {{name1}} </b></p>-->
+<!--    天数:<input type='text'name="天数"><br>-->
+<!--    该电池的{{result}}<br>-->
+<!--    <input type='submit' value='Predict'>-->
+<!--    </form>-->
+<!--        <form action='/predict' method="POST">-->
+<!--            天数:<input type='text'name="天数"><br>-->
+<!--            该电池的{{result}}<br>-->
+
+<!--            <input type='submit' value='Predict'>-->
+<!--        </form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<html>
+    <body>
+        <p>文件上传成功!</p>
+        <p>要处理的文件名称为: <b> {{name1}} </b></p>
+<!--        <p>要处理的文件名称为: <b> {{name2}} </b></p>-->
+
+        <form action='/guanli_predict' method='POST'>
+<!--            天数:<input type='text'name="天数"><br>-->
+            该电池组的状态检测结果为：{{result}}<br>
+            <a href="http://127.0.0.1:100/guanli_plot">蓄电池健康状态管理可视化</a>
+        </form>
+    </body>
+</html>
